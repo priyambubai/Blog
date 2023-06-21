@@ -1,0 +1,32 @@
+<%- include("partials/header"); -%>
+
+    <h1>
+        <%= posts[0].title %>
+    </h1>
+
+    <p>
+        <%= posts[0].body %>
+    </p>
+
+    <% posts.forEach(post=> { %>
+        <% if (post._id !==posts[0]._id) {%>
+            <h1>
+                <%= post.title %>
+            </h1>
+
+            <% if (post.body.length <=100) { %>
+                <p>
+                    <%= post.body %>
+                </p>
+                <% } else { %>
+                    <p>
+                        <%= post.body.slice(0, 100) + "..." %>
+                            <a href="/posts/<%= post.title %>">Read More
+                            </a>
+                    </p>
+                    <% } %>
+                        <% } %>
+
+                            <% }); %>
+
+                                <%- include("partials/footer"); -%>
